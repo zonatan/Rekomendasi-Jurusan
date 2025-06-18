@@ -23,9 +23,10 @@
 
 <div align="center">
   <img src="images/home.png" width="45%" alt="Halaman Utama">
+  <img src="images/form.png" width="45%" alt="Form Input">
   <img src="images/hasil.png" width="45%" alt="Hasil Rekomendasi"> 
   <img src="images/chart.png" width="45%" alt="Chart Hasil"> 
-  <img src="images/form.png" width="45%" alt="Form Input">
+  
 </div>
 
 ---
@@ -34,8 +35,9 @@
 
 ```mermaid
 graph TD
-    A[Frontend] -->|Flask Template| B[Backend]
-    B --> C[Decision Tree Model]
-    C --> D[Dataset Processing]
-    D --> E[Pandas / NumPy]
-    B --> F[Result Analysis]
+    A[Frontend (Flask Template)] --> B[Backend (Flask)]
+    B --> C[Input User]
+    C --> D[Decision Tree Model]
+    D --> E[Dataset Processing]
+    E --> F[Pandas / NumPy]
+    D --> G[Output Rekomendasi]
