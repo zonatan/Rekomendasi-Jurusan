@@ -33,7 +33,6 @@
 
 ## 🛠️ Arsitektur & Teknologi
 
-## 🛠️ Arsitektur & Teknologi
 
 ```mermaid
 graph TD
