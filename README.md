@@ -33,11 +33,13 @@
 
 ## 🛠️ Arsitektur & Teknologi
 
+## 🛠️ Arsitektur & Teknologi
+
 ```mermaid
 graph TD
-    A[Frontend (Flask Template)] --> B[Backend (Flask)]
+    A[Frontend] -->|Flask Template| B[Backend Flask]
     B --> C[Input User]
     C --> D[Decision Tree Model]
     D --> E[Dataset Processing]
-    E --> F[Pandas / NumPy]
+    E --> F[Pandas/NumPy]
     D --> G[Output Rekomendasi]
