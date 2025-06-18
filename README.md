@@ -25,7 +25,7 @@
   <img src="images/home.png" width="45%" alt="Halaman Utama">
   <img src="images/hasil.png" width="45%" alt="Hasil Rekomendasi"> 
   <img src="images/chart.png" width="45%" alt="Chart Hasil"> 
-  <img src="images/form.png" width="90%" alt="Form Input">
+  <img src="images/form.png" width="45%" alt="Form Input">
 </div>
 
 ---
