@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rekomendasi Jurusan UNIKA De La Salle</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="particles">
+                <div class="particle" style="width: 10px; height: 10px; left: 20%; animation-delay: 0s;"></div>
+                <div class="particle" style="width: 8px; height: 8px; left: 50%; animation-delay: 2s;"></div>
+                <div class="particle" style="width: 12px; height: 12px; left: 80%; animation-delay: 4s;"></div>
+            </div>
+            <h1><i class="fas fa-graduation-cap"></i> Rekomendasi Program Studi</h1>
+            <p>UNIKA De La Salle Manado</p>
+        </header>
+
+        <div class="card">
+            <h2>Discover Your Future</h2>
+            <p>Isi kuesioner berikut untuk menemukan jurusan yang sesuai dengan passion dan bakat Anda.</p>
+
+            <div class="error" id="error" role="alert"></div>
+
+            <form id="recommendationForm">
+                <!-- Kelompok Pertanyaan 1 -->
+                <div class="question-group">
+                    <h3><i class="fas fa-user"></i> 1. Minat dan Preferensi Pribadi</h3>
+                    <div class="question">
+                        <label>Apakah Anda menyukai pembelajaran teoritis?</label>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="suka_teori" value="1" id="suka_teori_ya" required>
+                                <label for="suka_teori_ya">Ya</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="suka_teori" value="0" id="suka_teori_tidak">
+                                <label for="suka_teori_tidak">Tidak</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <label>Apakah Anda menyukai pekerjaan yang melibatkan angka?</label>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="suka_angka" value="1" id="suka_angka_ya" required>
+                                <label for="suka_angka_ya">Ya</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="suka_angka" value="0" id="suka_angka_tidak">
+                                <label for="suka_angka_tidak">Tidak</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <label>Apakah Anda memiliki minat dalam seni dan kreativitas visual?</label>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="suka_seni" value="1" id="suka_seni_ya" required>
+                                <label for="suka_seni_ya">Ya</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="suka_seni" value="0" id="suka_seni_tidak">
+                                <label for="suka_seni_tidak">Tidak</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <label>Apakah Anda nyaman berbicara di depan umum?</label>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="suka_public_speaking" value="1" id="suka_public_speaking_ya" required>
+                                <label for="suka_public_speaking_ya">Ya</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="suka_public_speaking" value="0" id="suka_public_speaking_tidak">
+                                <label for="suka_public_speaking_tidak">Tidak</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <label>Apakah Anda menikmati kegiatan menulis?</label>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="suka_menulis" value="1" id="suka_menulis_ya" required>
+                                <label for="suka_menulis_ya">Ya</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="suka_menulis" value="0" id="suka_menulis_tidak">
+                                <label for="suka_menulis_tidak">Tidak</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kelompok Pertanyaan 2 -->
+                <div class="question-group">
+                    <h3><i class="fas fa-book"></i> 2. Bidang yang Disukai</h3>
+                    <div class="question">
+                        <label>Apakah mata pelajaran favorit Anda?</label>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="mapel_favorit" value="ipa" id="mapel_favorit_ipa" required>
+                                <label for="mapel_favorit_ipa">IPA</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="mapel_favorit" value="ips" id="mapel_favorit_ips">
+                                <label for="mapel_favorit_ips">IPS</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="mapel_favorit" value="none" id="mapel_favorit_none">
+                                <label for="mapel_favorit_none">Tidak ada</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <label>Apakah Anda tertarik dengan perkembangan teknologi?</label>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="tertarik_teknologi" value="1" id="tertarik_teknologi_ya" required>
+                                <label for="tertarik_teknologi_ya">Ya</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="tertarik_teknologi" value="0" id="tertarik_teknologi_tidak">
+                                <label for="tertarik_teknologi_tidak">Tidak</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <label>Apakah Anda tertarik dengan dunia bisnis?</label>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="tertarik_bisnis" value="1" id="tertarik_bisnis_ya" required>
+                                <label for="tertarik_bisnis_ya">Ya</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="tertarik_bisnis" value="0" id="tertarik_bisnis_tidak">
+                                <label for="tertarik_bisnis_tidak">Tidak</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <label>Apakah Anda tertarik dengan bidang kesehatan?</label>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="tertarik_kesehatan" value="1" id="tertarik_kesehatan_ya" required>
+                                <label for="tertarik_kesehatan_ya">Ya</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="tertarik_kesehatan" value="0" id="tertarik_kesehatan_tidak">
+                                <label for="tertarik_kesehatan_tidak">Tidak</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <label>Apakah Anda tertarik dengan bidang hukum?</label>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="tertarik_hukum" value="1" id="tertarik_hukum_ya" required>
+                                <label for="tertarik_hukum_ya">Ya</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="tertarik_hukum" value="0" id="tertarik_hukum_tidak">
+                                <label for="tertarik_hukum_tidak">Tidak</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kelompok Pertanyaan 3 -->
+                <div class="question-group">
+                    <h3><i class="fas fa-chalkboard-teacher"></i> 3. Gaya Belajar</h3>
+                    <div class="question">
+                        <label>Apakah Anda menyukai bekerja dalam tim?</label>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="suka_kerja_tim" value="1" id="suka_kerja_tim_ya" required>
+                                <label for="suka_kerja_tim_ya">Ya</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="suka_kerja_tim" value="0" id="suka_kerja_tim_tidak">
+                                <label for="suka_kerja_tim_tidak">Tidak</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <label>Apakah Anda menyukai pekerjaan berbasis proyek?</label>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="suka_proyek" value="1" id="suka_proyek_ya" required>
+                                <label for="suka_proyek_ya">Ya</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="suka_proyek" value="0" id="suka_proyek_tidak">
+                                <label for="suka_proyek_tidak">Tidak</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <label>Apakah Anda menikmati memecahkan masalah teknis?</label>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="suka_masalah_teknis" value="1" id="suka_masalah_teknis_ya" required>
+                                <label for="suka_masalah_teknis_ya">Ya</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="suka_masalah_teknis" value="0" id="suka_masalah_teknis_tidak">
+                                <label for="suka_masalah_teknis_tidak">Tidak</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kelompok Pertanyaan 4 -->
+                <div class="question-group">
+                    <h3><i class="fas fa-briefcase"></i> 4. Tujuan Karir</h3>
+                    <div class="question">
+                        <label>Apakah Anda bercita-cita menjadi pengusaha?</label>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="cita_pengusaha" value="1" id="cita_pengusaha_ya" required>
+                                <label for="cita_pengusaha_ya">Ya</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="cita_pengusaha" value="0" id="cita_pengusaha_tidak">
+                                <label for="cita_pengusaha_tidak">Tidak</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <label>Apakah Anda bercita-cita bekerja di bidang teknologi?</label>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="cita_teknologi" value="1" id="cita_teknologi_ya" required>
+                                <label for="cita_teknologi_ya">Ya</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="cita_teknologi" value="0" id="cita_teknologi_tidak">
+                                <label for="cita_teknologi_tidak">Tidak</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <label>Apakah Anda bercita-cita bekerja di bidang kesehatan?</label>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="cita_kesehatan" value="1" id="cita_kesehatan_ya" required>
+                                <label for="cita_kesehatan_ya">Ya</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="cita_kesehatan" value="0" id="cita_kesehatan_tidak">
+                                <label for="cita_kesehatan_tidak">Tidak</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <label>Apakah Anda bercita-cita bekerja di bidang pendidikan?</label>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="cita_pendidikan" value="1" id="cita_pendidikan_ya" required>
+                                <label for="cita_pendidikan_ya">Ya</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="cita_pendidikan" value="0" id="cita_pendidikan_tidak">
+                                <label for="cita_pendidikan_tidak">Tidak</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kelompok Pertanyaan 5 -->
+                <div class="question-group">
+                    <h3><i class="fas fa-star"></i> 5. Kemampuan Diri</h3>
+                    <div class="question">
+                        <label>Apakah Anda memiliki kemampuan analisis yang baik?</label>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="kemampuan_analisis" value="1" id="kemampuan_analisis_ya" required>
+                                <label for="kemampuan_analisis_ya">Ya</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="kemampuan_analisis" value="0" id="kemampuan_analisis_tidak">
+                                <label for="kemampuan_analisis_tidak">Tidak</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <label>Apakah Anda orang yang teliti dalam bekerja?</label>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="ketelitian" value="1" id="ketelitian_ya" required>
+                                <label for="ketelitian_ya">Ya</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="ketelitian" value="0" id="ketelitian_tidak">
+                                <label for="ketelitian_tidak">Tidak</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <label>Apakah Anda menganggap diri Anda kreatif?</label>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="kreativitas" value="1" id="kreativitas_ya" required>
+                                <label for="kreativitas_ya">Ya</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="kreativitas" value="0" id="kreativitas_tidak">
+                                <label for="kreativitas_tidak">Tidak</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <label>Apakah Anda memiliki kemampuan komunikasi yang baik?</label>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="komunikasi" value="1" id="komunikasi_ya" required>
+                                <label for="komunikasi_ya">Ya</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="komunikasi" value="0" id="komunikasi_tidak">
+                                <label for="komunikasi_tidak">Tidak</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kelompok Pertanyaan 6 -->
+                <div class="question-group">
+                    <h3><i class="fas fa-trophy"></i> 6. Minat Ekstrakurikuler</h3>
+                    <div class="question">
+                        <label>Apakah Anda aktif dalam ekstrakurikuler IT?</label>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="ekstra_it" value="1" id="ekstra_it_ya" required>
+                                <label for="ekstra_it_ya">Ya</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="ekstra_it" value="0" id="ekstra_it_tidak">
+                                <label for="ekstra_it_tidak">Tidak</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="question">
+                        <label>Apakah Anda aktif dalam debat atau public speaking?</label>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="ekstra_debat" value="1" id="ekstra_debat_ya" required>
+                                <label for="ekstra_debat_ya">Ya</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="ekstra_debat" value="0" id="ekstra_debat_tidak">
+                                <label for="ekstra_debat_tidak">Tidak</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kelompok Pertanyaan 7 -->
+                <div class="question-group">
+                    <h3><i class="fas fa-users"></i> 7. Pengalaman Organisasi</h3>
+                    <div class="question">
+                        <label>Apakah Anda memiliki pengalaman organisasi?</label>
+                        <div class="options">
+                            <div class="option">
+                                <input type="radio" name="pengalaman_organisasi" value="1" id="pengalaman_organisasi_ya" required>
+                                <label for="pengalaman_organisasi_ya">Ya</label>
+                            </div>
+                            <div class="option">
+                                <input type="radio" name="pengalaman_organisasi" value="0" id="pengalaman_organisasi_tidak">
+                                <label for="pengalaman_organisasi_tidak">Tidak</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <button type="submit"><i class="fas fa-rocket"></i> Temukan Jurusan Anda</button>
+            </form>
+
+            <div class="loading" id="loading">
+                <div class="spinner"></div>
+                <p>Menganalisis passion Anda...</p>
+            </div>
+
+            <div class="result" id="result">
+                <h2>Hasil Rekomendasi</h2>
+                <p>Jurusan yang paling cocok untuk Anda berdasarkan minat dan bakat:</p>
+
+                <div class="result-grid" id="recommendations"></div>
+
+                <div class="chart-container">
+                    <canvas id="probabilityChart"></canvas>
+                </div>
+
+                <button onclick="resetForm()"><i class="fas fa-redo"></i> Coba Lagi</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let chartInstance = null;
+
+        // Fungsi untuk memformat kriteria
+        function formatCriteria(criteria) {
+            return criteria.map(item => {
+                return item.replace(/_/g, ' ')
+                    .replace(/\b\w/g, char => char.toUpperCase());
+            }).join(', ');
+        }
+
+        // Generate particles
+        function createParticles() {
+            const particlesContainer = document.querySelector('.particles');
+            for (let i = 0; i < 20; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.width = `${Math.random() * 10 + 5}px`;
+                particle.style.height = particle.style.width;
+                particle.style.left = `${Math.random() * 100}%`;
+                particle.style.animationDelay = `${Math.random() * 5}s`;
+                particlesContainer.appendChild(particle);
+            }
+        }
+
+        createParticles();
+
+        document.getElementById('recommendationForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const errorDiv = document.getElementById('error');
+            errorDiv.style.display = 'none';
+            errorDiv.textContent = '';
+
+            document.getElementById('loading').style.display = 'block';
+            document.getElementById('result').style.display = 'none';
+
+            const formData = {
+                suka_teori: document.querySelector('input[name="suka_teori"]:checked')?.value || '0',
+                suka_angka: document.querySelector('input[name="suka_angka"]:checked')?.value || '0',
+                suka_seni: document.querySelector('input[name="suka_seni"]:checked')?.value || '0',
+                suka_public_speaking: document.querySelector('input[name="suka_public_speaking"]:checked')?.value || '0',
+                suka_menulis: document.querySelector('input[name="suka_menulis"]:checked')?.value || '0',
+                mapel_favorit_ipa: document.querySelector('input[name="mapel_favorit"]:checked')?.value === 'ipa' ? '1' : '0',
+                mapel_favorit_ips: document.querySelector('input[name="mapel_favorit"]:checked')?.value === 'ips' ? '1' : '0',
+                tertarik_teknologi: document.querySelector('input[name="tertarik_teknologi"]:checked')?.value || '0',
+                tertarik_bisnis: document.querySelector('input[name="tertarik_bisnis"]:checked')?.value || '0',
+                tertarik_kesehatan: document.querySelector('input[name="tertarik_kesehatan"]:checked')?.value || '0',
+                tertarik_hukum: document.querySelector('input[name="tertarik_hukum"]:checked')?.value || '0',
+                suka_kerja_tim: document.querySelector('input[name="suka_kerja_tim"]:checked')?.value || '0',
+                suka_proyek: document.querySelector('input[name="suka_proyek"]:checked')?.value || '0',
+                suka_masalah_teknis: document.querySelector('input[name="suka_masalah_teknis"]:checked')?.value || '0',
+                cita_pengusaha: document.querySelector('input[name="cita_pengusaha"]:checked')?.value || '0',
+                cita_teknologi: document.querySelector('input[name="cita_teknologi"]:checked')?.value || '0',
+                cita_kesehatan: document.querySelector('input[name="cita_kesehatan"]:checked')?.value || '0',
+                cita_pendidikan: document.querySelector('input[name="cita_pendidikan"]:checked')?.value || '0',
+                kemampuan_analisis: document.querySelector('input[name="kemampuan_analisis"]:checked')?.value || '0',
+                ketelitian: document.querySelector('input[name="ketelitian"]:checked')?.value || '0',
+                kreativitas: document.querySelector('input[name="kreativitas"]:checked')?.value || '0',
+                komunikasi: document.querySelector('input[name="komunikasi"]:checked')?.value || '0',
+                ekstra_it: document.querySelector('input[name="ekstra_it"]:checked')?.value || '0',
+                ekstra_debat: document.querySelector('input[name="ekstra_debat"]:checked')?.value || '0',
+                pengalaman_organisasi: document.querySelector('input[name="pengalaman_organisasi"]:checked')?.value || '0'
+            };
+
+            const requiredFields = [
+                'suka_teori', 'suka_angka', 'suka_seni', 'suka_public_speaking', 'suka_menulis',
+                'mapel_favorit', 'tertarik_teknologi', 'tertarik_bisnis', 'tertarik_kesehatan', 'tertarik_hukum',
+                'suka_kerja_tim', 'suka_proyek', 'suka_masalah_teknis', 'cita_pengusaha', 'cita_teknologi',
+                'cita_kesehatan', 'cita_pendidikan', 'kemampuan_analisis', 'ketelitian', 'kreativitas',
+                'komunikasi', 'ekstra_it', 'ekstra_debat', 'pengalaman_organisasi'
+            ];
+
+            const missingFields = requiredFields.filter(field => !document.querySelector(`input[name="${field}"]:checked`));
+            if (missingFields.length > 0) {
+                document.getElementById('loading').style.display = 'none';
+                errorDiv.textContent = `Harap jawab pertanyaan berikut: ${missingFields.map(f => f.replace('_', ' ')).join(', ')}`;
+                errorDiv.style.display = 'block';
+                return;
+            }
+
+            console.log('Sending form data:', formData);
+
+            fetch('/recommend', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                document.getElementById('loading').style.display = 'none';
+
+                if (data.success) {
+                    const resultGrid = document.getElementById('recommendations');
+                    resultGrid.innerHTML = '';
+
+                    const maxPercentage = Math.max(...data.recommendations.map(item => item.match_percentage));
+
+                    data.recommendations.forEach(item => {
+                        const card = document.createElement('div');
+                        card.className = `result-card ${item.match_percentage === maxPercentage ? 'highlight' : ''}`;
+                        card.dataset.jurusan = item.jurusan;
+                        card.innerHTML = `
+                            <h4>${item.jurusan}</h4>
+                            <div class="percentage">${item.match_percentage}%</div>
+                            <div class="criteria">${formatCriteria(item.matched_criteria) || 'Tidak ada'}</div>
+                            <div class="description">${item.description}</div>
+                        `;
+                        resultGrid.appendChild(card);
+                    });
+
+                    // Pastikan canvas ada dan bersih
+                    const canvas = document.getElementById('probabilityChart');
+                    if (!canvas) {
+                        console.error('Canvas element not found!');
+                        return;
+                    }
+                    const ctx = canvas.getContext('2d');
+                    if (!ctx) {
+                        console.error('Failed to get 2D context for canvas!');
+                        return;
+                    }
+
+                    if (chartInstance) {
+                        chartInstance.destroy();
+                        chartInstance = null;
+                    }
+
+                    console.log('Chart data:', data.recommendations);
+
+                    chartInstance = new Chart(ctx, {
+                        type: 'bar',
+                        data: {
+                            labels: data.recommendations.map(item => item.jurusan),
+                            datasets: [{
+                                label: 'Persentase Kecocokan (%)',
+                                data: data.recommendations.map(item => item.match_percentage),
+                                backgroundColor: data.recommendations.map(item => 
+                                    item.match_percentage === maxPercentage 
+                                        ? 'rgba(0, 99, 65, 0.8)' 
+                                        : 'rgba(102, 179, 255, 0.8)'
+                                ),
+                                borderColor: data.recommendations.map(item => 
+                                    item.match_percentage === maxPercentage ? '#004d33' : '#3399ff'
+                                ),
+                                borderWidth: 1,
+                                borderRadius: 10,
+                                barPercentage: 0.8
+                            }]
+                        },
+                        options: {
+                            indexAxis: 'y',
+                            responsive: true,
+                            maintainAspectRatio: false,
+                            animation: {
+                                duration: 1500,
+                                easing: 'easeOutBounce'
+                            },
+                            scales: {
+                                x: {
+                                    beginAtZero: true,
+                                    max: 100,
+                                    grid: { color: '#eee' },
+                                    title: {
+                                        display: true,
+                                        text: 'Persentase Kecocokan (%)',
+                                        font: { size: 14, weight: '600' }
+                                    }
+                                },
+                                y: {
+                                    title: {
+                                        display: true,
+                                        text: 'Jurusan',
+                                        font: { size: 14, weight: '600' }
+                                    },
+                                    ticks: { font: { size: 12 } }
+                                }
+                            },
+                            plugins: {
+                                legend: { display: false },
+                                tooltip: {
+                                    backgroundColor: '#004d33',
+                                    titleFont: { size: 14 },
+                                    bodyFont: { size: 12 },
+                                    callbacks: {
+                                        label: function(context) {
+                                            return `${context.raw}%`;
+                                        }
+                                    }
+                                }
+                            },
+                            onClick: (e, elements) => {
+                                if (elements.length > 0) {
+                                    const index = elements[0].index;
+                                    const jurusan = data.recommendations[index].jurusan;
+                                    document.querySelectorAll('.result-card').forEach(card => {
+                                        card.classList.toggle('highlight', card.dataset.jurusan === jurusan);
+                                    });
+                                }
+                            }
+                        }
+                    });
+
+                    document.getElementById('result').style.display = 'block';
+                    document.getElementById('result').scrollIntoView({ behavior: 'smooth' });
+                } else {
+                    errorDiv.textContent = data.message || `Terjadi kesalahan: ${data.error}`;
+                    errorDiv.style.display = 'block';
+                    errorDiv.scrollIntoView({ behavior: 'smooth' });
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                document.getElementById('loading').style.display = 'none';
+                errorDiv.textContent = `Terjadi kesalahan: ${error.message}. Silakan coba lagi.`;
+                errorDiv.style.display = 'block';
+                errorDiv.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        function resetForm() {
+            document.getElementById('recommendationForm').reset();
+            document.getElementById('result').style.display = 'none';
+            document.getElementById('error').style.display = 'none';
+
+            // Reset canvas
+            const canvas = document.getElementById('probabilityChart');
+            const parent = canvas.parentNode;
+            const newCanvas = document.createElement('canvas');
+            newCanvas.id = 'probabilityChart';
+            parent.replaceChild(newCanvas, canvas);
+
+            if (chartInstance) {
+                chartInstance.destroy();
+                chartInstance = null;
+            }
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
