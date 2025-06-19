@@ -1,44 +1,65 @@
-# 🎓 JurusanFinder – Rekomendasi Jurusan Kuliah Pintar
-
-> Sistem rekomendasi jurusan kuliah berbasis AI yang membantu siswa menentukan pilihan jurusan optimal berdasarkan kepribadian, minat, dan kemampuan menggunakan algoritma **Decision Tree**.
-
-[![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://python.org)
-[![Flask](https://img.shields.io/badge/Flask-2.0-lightgrey.svg)](https://flask.palletsprojects.com/)
-[![Scikit-learn](https://img.shields.io/badge/Scikit--learn-1.0-orange.svg)](https://scikit-learn.org/)
-
----
-
-## ✨ Fitur Unggulan
-
-| Fitur                  | Deskripsi |
-|------------------------|-----------|
-| 🧠 **AI Recommendation** | Sistem rekomendasi berbasis Decision Tree yang telah dilatih |
-| 📊 **Analisis Multifaktor** | Menggabungkan minat, nilai akademik, dan kepribadian |
-| 🎯 **Akurasi Tinggi**     | Model machine learning dengan akurasi >85% |
-| 📱 **Web Responsif**     | Tampilan UI yang mendukung semua perangkat (mobile & desktop) |
-
----
-
-## 🖼️ Screenshot Aplikasi
+# 🚀 JurusanFinder – Your Smart University Major Advisor
 
 <div align="center">
-  <img src="images/home.png" width="45%" alt="Halaman Utama">
-  <img src="images/form.png" width="45%" alt="Form Input">
-  <img src="images/hasil.png" width="45%" alt="Hasil Rekomendasi"> 
-  <img src="images/chart.png" width="45%" alt="Chart Hasil"> 
-  
+  <img src="https://img.shields.io/badge/Python-3.8+-3776AB?style=for-the-badge&logo=python&logoColor=white">
+  <img src="https://img.shields.io/badge/Flask-2.0-000000?style=for-the-badge&logo=flask&logoColor=white">
+  <img src="https://img.shields.io/badge/Scikit--Learn-1.0-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white">
+  <img src="https://img.shields.io/badge/Pandas-2.0-150458?style=for-the-badge&logo=pandas&logoColor=white">
+</div>
+
+<br>
+
+> **AI-powered university major recommendation system** that helps high school students discover their ideal study path based on personality, interests, and academic performance using **Decision Tree algorithm**.
+
+<div align="center">
+  <a href="#-try-the-demo">View Demo</a> • 
+  <a href="#-features">Features</a> • 
+  <a href="#-how-it-works">How It Works</a> • 
+  <a href="#-technology-stack">Tech Stack</a> • 
+  <a href="#-screenshots">Screenshots</a>
 </div>
 
 ---
 
-## 🛠️ Arsitektur & Teknologi
+## 🌟 Why JurusanFinder?
 
+Choosing a university major is one of the most important decisions in a student's life. JurusanFinder eliminates the guesswork by providing:
+
+✅ **Data-driven recommendations** powered by Machine Learning  
+✅ **Personalized analysis** combining multiple factors  
+✅ **Accurate predictions** with 85%+ model accuracy  
+✅ **User-friendly interface** for seamless experience  
+
+---
+
+## ✨ Features
+
+<div align="center">
+
+| 🧠 Smart Analysis | 📊 Comprehensive Evaluation | 🎯 Precision Matching |
+|------------------|------------------|------------------|
+| Evaluates personality traits, academic strengths, and personal interests | Combines multiple decision factors with weighted scoring | Delivers highly accurate major recommendations |
+
+</div>
+
+---
+
+## 🖥️ Screenshots
+
+<div align="center">
+  <img src="images/home.png" width="30%" alt="Homepage">
+  <img src="images/form.png" width="30%" alt="Input Form"> 
+  <img src="images/hasil.png" width="30%" alt="Results">
+</div>
+
+---
+
+## ⚙️ How It Works
 
 ```mermaid
-graph TD
-    A[Frontend] -->|Flask Template| B[Backend Flask]
-    B --> C[Input User]
-    C --> D[Decision Tree Model]
-    D --> E[Dataset Processing]
-    E --> F[Pandas/NumPy]
-    D --> G[Output Rekomendasi]
+graph LR
+    A[User Input] --> B[Data Preprocessing]
+    B --> C[Decision Tree Model]
+    C --> D[Recommendation Engine]
+    D --> E[Personalized Results]
+    E --> F[Visual Analytics]
